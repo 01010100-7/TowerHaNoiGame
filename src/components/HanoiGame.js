@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import update from 'immutability-helper';
 import GameDescription from './GameDescription';
-
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
@@ -17,8 +16,8 @@ const firebaseConfig = {
   projectId: "thaphanoi-f33ad",
   storageBucket: "thaphanoi-f33ad.appspot.com",
   messagingSenderId: "336387359505",
-  appId: "1:336387359505:web:6105f875a94e4912b902b0",
-  measurementId: "G-FFNSRJYGJT"
+  appId: "1:336387359505:web:23caf44570c3ca31b902b0",
+  measurementId: "G-SCDHNK2PRP"
 };
 
 // Initialize Firebase
