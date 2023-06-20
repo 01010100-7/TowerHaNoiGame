@@ -5,18 +5,14 @@ Hanoi game built with React, just for fun.
 <img src="/public/screenshot.png" width="600px">
 
 # Demo
-http://hanoi-game-react.herokuapp.com/
+https://master--genuine-sorbet-9337f2.netlify.app/
 
 # Installation
 ```
-git clone https://github.com/bitriddler/hanoi-react
+git clone https://github.com/01010100-7/TowerHaNoiGame
 cd hanoi-react
 npm install
 npm start
 ```
 
-# Hanoi Game Component
-[src/components/HanoiGame.js](/src/components/HanoiGame.js)
 
-# License
-This project is licensed under the MIT license.
