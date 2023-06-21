@@ -10,6 +10,11 @@ class HanoiGame extends React.Component {
       "blue",
       "red",
       "green",
+      "yellow",
+      "black",
+      "pink",
+      "ORANGE",
+      "PURPLE"
     ]
     if (colors.length === 0) {
       return null;
