@@ -2,27 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import update from 'immutability-helper';
 import GameDescription from './GameDescription';
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyCBw65fEMiECW-8dTKt5mOgKki7gQHqfEc",
-  authDomain: "thaphanoi-f33ad.firebaseapp.com",
-  projectId: "thaphanoi-f33ad",
-  storageBucket: "thaphanoi-f33ad.appspot.com",
-  messagingSenderId: "336387359505",
-  appId: "1:336387359505:web:23caf44570c3ca31b902b0",
-  measurementId: "G-SCDHNK2PRP"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 
 class HanoiGame extends React.Component {
   constructor(props) {
@@ -184,8 +163,8 @@ const Wrapper = styled.div`
 
 const GameWrapper = styled.div`
   width: 100%;
-  max-width: 500px;
-  margin-top: 50px;
+  max-width: 720px;
+  margin-top: 24px;
 `;
 
 const Towers = styled.div`
@@ -209,7 +188,7 @@ const Tower = styled.div`
 `;
 
 const Disk = styled.div`
-  height: 10px;
+  height: 24px;
   width: ${props => (props.value/props.length) * 100}%;
   background: #333;
   margin-top: 3px;

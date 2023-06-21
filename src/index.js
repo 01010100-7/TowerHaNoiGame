@@ -1,6 +1,6 @@
 import WebFont from 'webfontloader';
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM, { render } from 'react-dom';
 import 'normalize.css/normalize.css';
 import HanoiGame from './components/HanoiGame';
 import * as serviceWorker from './serviceWorker';
