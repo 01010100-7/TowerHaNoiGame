@@ -4,6 +4,20 @@ import update from 'immutability-helper';
 import GameDescription from './GameDescription';
 
 class HanoiGame extends React.Component {
+ 
+  randomItem() {
+    const  colors = [
+      "blue",
+      "red",
+      "green",
+    ]
+    if (colors.length === 0) {
+      return null;
+    }
+  
+    const randomIndex = Math.floor(Math.random() * colors.length);
+    return colors[randomIndex];
+  }
   constructor(props) {
     super(props);
     this.state = this.getInitialState(4);
@@ -12,6 +26,7 @@ class HanoiGame extends React.Component {
   incrementDisks = () => {
     this.setState(
       this.getInitialState(this.state.towerLength + 1)
+
     )
   };
 
@@ -26,6 +41,10 @@ class HanoiGame extends React.Component {
     }
   };
 
+  // color
+
+  
+  //reset
   reset = () => {
     this.setState(
       this.getInitialState(this.state.towerLength)
@@ -35,6 +54,7 @@ class HanoiGame extends React.Component {
   getInitialState = (towerLength) => ({
     towerLength,
     towers: this.getInitialTowers(towerLength),
+    prevTowners: [this.towers] ||[this.getInitialTowers(towerLength)] ,
     clickedTowerIndex: -1,
     error: null,
     noOfMoves: 0,
@@ -85,11 +105,20 @@ class HanoiGame extends React.Component {
           }),
         },
       }),
+      prevTowners: [towers, ...this.state.prevTowners],
       clickedTowerIndex: -1,
       error: null,
       noOfMoves: noOfMoves + 1,
     });
   };
+  onRevertTowers = () => {
+    console.log(this.state.prevTowners)
+    const a = this.state.prevTowners
+    if (a.length <= 0) return;
+    const gfahsjfhjksa = a.shift();
+    console.log({gfahsjfhjksa})
+    this.setState({...this.state, towers: gfahsjfhjksa, prevTowners:a })
+  }
 
   onTowerClick = (towerIndex) => {
     if (this.state.clickedTowerIndex === towerIndex) {
@@ -100,6 +129,23 @@ class HanoiGame extends React.Component {
       this.setState({ clickedTowerIndex: towerIndex });
     }
   };
+
+  onStartTime = () => {
+    this.tiendeptrai = null;
+    this.timer = setInterval(() => {
+      this.setState(prevState => ({
+        time: prevState.time + 1 || 1
+      }));
+    }, 1000);
+    // this.setState({timer: this.timer})
+  }
+  onEndTime = () => {
+    this.tiendeptrai = this.state.time
+    clearInterval(this.timer);
+    this.setState({time: null})
+  }
+
+
 
   render() {
     const {
@@ -115,11 +161,11 @@ class HanoiGame extends React.Component {
         <GameWrapper>
           <ScoreBoard>
             <Score>
-              <ScoreKey>No. of moves: </ScoreKey>
+              <ScoreKey>Số bước đã di chuyển: </ScoreKey>
               <ScoreValue>{noOfMoves}</ScoreValue>
             </Score>
             <Score>
-              <ScoreKey>No. of disks: </ScoreKey>
+              <ScoreKey>Số lượng tháp: </ScoreKey>
               <ScoreButton onClick={this.incrementDisks}>
                 +
               </ScoreButton>
@@ -128,6 +174,32 @@ class HanoiGame extends React.Component {
                 -
               </ScoreButton>
             </Score>
+            {/* Start time */}
+
+            {!this.state.time && (
+              <ScoreButton
+                onClick={this.onStartTime}
+              >
+                Start time
+              </ScoreButton>
+            )}
+            {this.state.time && (
+              <ScoreButton
+                onClick={this.onEndTime}
+              >
+                End time
+              </ScoreButton>
+            )}
+            {this.state.time || this.tiendeptrai}
+
+
+            <ScoreButton
+              onClick={this.onRevertTowers}
+            >
+              Revert
+            </ScoreButton>
+
+            {/* reset */}
             <ScoreButton
               onClick={this.reset}
             >
@@ -135,10 +207,11 @@ class HanoiGame extends React.Component {
             </ScoreButton>
           </ScoreBoard>
           <Towers>
+            {console.log({towers})}
             {towers.map((tower, i) => (
               <Tower isSelected={clickedTowerIndex === i} onClick={() => this.onTowerClick(i)} key={i}>
                 {tower.map((value, j) => (
-                  <Disk key={j} length={towerLength} value={value} />
+                  <Disk key={j} length={towerLength} value={value} backgroundColor={this.randomItem()} />
                 ))}
               </Tower>
             ))}
@@ -149,7 +222,6 @@ class HanoiGame extends React.Component {
     )
   }
 }
-
 
 const Wrapper = styled.div` 
   width: 100vw;
@@ -163,7 +235,7 @@ const Wrapper = styled.div`
 
 const GameWrapper = styled.div`
   width: 100%;
-  max-width: 720px;
+  max-width: 1440px;
   margin-top: 24px;
 `;
 
@@ -188,9 +260,9 @@ const Tower = styled.div`
 `;
 
 const Disk = styled.div`
-  height: 24px;
+  height: 32px;
   width: ${props => (props.value/props.length) * 100}%;
-  background: #333;
+  background: ${props => props.backgroundColor};
   margin-top: 3px;
 `;
 

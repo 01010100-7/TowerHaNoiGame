@@ -21,7 +21,7 @@ const Link = styled.a``;
 export default () => (
   <Wrapper>
     <div>
-      <img src={logo} style={{width: 175, height: 125}}/>
+      <img src={logo} style={{width: 132, height: 164}}/>
     </div>
       <Title>Game Tháp Hà Nội</Title>
       <Subtitle>Bạn hãy di chuyển tháp từ bên trái (ô thứ 1) sang bên phải (ô thứ 3)</Subtitle>
