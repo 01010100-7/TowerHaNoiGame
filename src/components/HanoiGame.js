@@ -178,14 +178,14 @@ class HanoiGame extends React.Component {
               <ScoreButton
                 onClick={this.onStartTime}
               >
-                Start time
+                Bắt đầu tính thời gian
               </ScoreButton>
             )}
             {this.state.time && (
               <ScoreButton
                 onClick={this.onEndTime}
               >
-                End time
+                Dừng tính thời gian
               </ScoreButton>
             )}
             {this.state.time || this.tiendeptrai}
@@ -194,14 +194,14 @@ class HanoiGame extends React.Component {
             <ScoreButton
               onClick={this.onRevertTowers}
             >
-              Revert
+              Lùi lại
             </ScoreButton>
 
             {/* reset */}
             <ScoreButton
               onClick={this.reset}
             >
-              Reset
+              Bắt đầu lại
             </ScoreButton>
           </ScoreBoard>
           <Towers>
