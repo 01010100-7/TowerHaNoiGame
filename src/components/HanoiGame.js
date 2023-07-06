@@ -7,14 +7,7 @@ class HanoiGame extends React.Component {
  
   randomItem() {
     const  colors = [
-      "blue",
-      "red",
-      "green",
-      "yellow",
-      "black",
-      "pink",
-      "ORANGE",
-      "PURPLE"
+      "Aqua"
     ]
     if (colors.length === 0) {
       return null;
